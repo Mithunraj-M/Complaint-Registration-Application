@@ -3,7 +3,7 @@ import './Footer.css'
 const Footer = () => {
   return (
     <div className='foot'>
-      <p>Copyrights 2024, Team Name</p>
+      <p>Copyrights 2024, Team of 4</p>
     </div>
   )
 }

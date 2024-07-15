@@ -1,0 +1,153 @@
+.MainBody {
+  padding-top: 100px;
+    height: 110vh;
+    width: 100%;
+    background-image: url(/src/Components/Pages/Assets/Images/bgbgbg.png);
+    background-position:center;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: justify-content 5s ease-in-out;
+    background-repeat: no-repeat;
+  }
+  
+  .PhoneDiv {
+    width: 28.16rem;
+    height: 48.1194rem;
+    background-image: linear-gradient(white, rgb(195, 223, 243));
+    z-index: 1;
+    border-radius: 25px;
+    box-shadow: 0 20px 20px -4px rgba(0, 0, 0, 0.2),
+      28px 0 10px -10px rgba(0, 0, 0, 0.2),
+      -18px 0 18px -18px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.5s ease-in-out,
+      transform 0.5s ease-in-out,
+      order 0.5s ease-in-out;
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .fade-out {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  
+  .fade-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .Big-Text {
+    color: #000;
+    font-family: "Roboto Condensed";
+    font-size: 4.6875rem;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    transition: order 0.5s ease-in-out;
+    margin: 0 2rem;
+    width: 50%;
+  }
+  
+  .align-start .Big-Text {
+    order: 1;
+  }
+  
+  .align-start .PhoneDiv {
+    order: 2;
+  }
+  
+  .align-end .Big-Text {
+    order: 2;
+  }
+  
+  .align-end .PhoneDiv {
+    order: 1;
+  }
+  
+  .WavePicPhone {
+    background-image: url(/src/Components/Pages/Assets/Images/waves.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+  }
+  
+  .input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    margin-right: 10px; 
+  }
+  
+  .input-icon img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .placeholder {
+    color: black;
+  }
+  
+  .user-sign-text {
+    text-align: center;
+    padding-top: 1rem;
+    text-shadow: 2px 2px 4px #777777;
+  }
+  
+  .SubtractDiv {
+    width: 18rem;
+    height: 55px;
+    background-color: white;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    grid-area: 1 / 1 / 1 / 2;
+    z-index: 2;
+    position: relative;
+    top: -35px;
+    left: 5rem;
+    border-radius: 8px;
+  }
+  
+  .SubtractDiv::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 1px;
+    height: 40%;
+    background-color: rgb(198, 198, 198);
+    opacity: 30%;
+  }
+  
+  .SubtractDiv::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 40%;
+    background-color: rgb(198, 198, 198);
+    opacity: 30%;
+  }
+  
+  #signup-dob {
+    color: grey;
+  }
+  
+  #signup-first-name,
+  #signup-last-name,
+  #signup-email,
+  #signup-phone,
+  #signup-dob,
+  #signup-password,
+  #signup-confirmpassword,
+  #login-password,
+  #login-phone {
+    background: transparent;
+  }
+
+
+.user{
+    margin-right: 0;
+}

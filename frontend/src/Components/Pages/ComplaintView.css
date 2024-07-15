@@ -1,0 +1,114 @@
+.main-page-complaint{
+  min-height: 100vh;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-row select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 10%;
+  margin-top: 3%;
+  border-radius: 15px;
+}
+
+#state1 {
+  margin-left: 35%;
+}
+
+.complaints-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.complaints-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.complaints-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.complaint-box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  
+  width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  margin: 20px;
+}
+
+.complaint-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background-color: rgb(125 201 236 / 32%);
+  padding: 10px;
+}
+
+.complaint-content {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.complaint-image {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.complaint-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  background-color: rgb(125 201 236 / 32%);
+  padding: 10px;
+}
+
+.like-button {
+ 
+  width:15%;
+}
+
+.complaint-date {
+  color: #777;
+}
+#like{
+  width: 20px;
+  height: 20px;
+
+}
+#complaint-title{
+  text-align: center;
+}
+.like-count{
+  
+  margin-left: 0px;
+}
+
+.last-button{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.button-last:hover{
+  color: blue;
+}

@@ -1,0 +1,102 @@
+/* ComplaintTable.css */
+#ComplaintHeading {
+  text-align: center;
+  color: black;
+  margin: 1.5em;
+}
+
+table.complaint-table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+th,
+td {
+  padding: 1em;
+  text-align: left;
+  border: none;
+}
+
+th {
+  background-color: #ffffff;
+  font-size: 1.6em;
+  font-weight: 800;
+  border-bottom: 1px solid grey;
+}
+
+td {
+  margin: 1em;
+  font-size: 1.3em;
+  font-weight: 500;
+  align-items: center;
+}
+
+td img {
+  width: 3em;
+  height: 3em;
+}
+
+td.complaint {
+  max-width: 15em; /* Adjust the width as needed */
+  max-height: 3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: relative;
+}
+
+td.complaint:hover {
+  overflow: visible;
+  white-space: normal;
+  z-index: 1;
+}
+
+tbody tr.even {
+  background-color: #f0f8ff;
+}
+
+tbody tr.odd {
+  background-color: #ffffff;
+}
+
+/* tbody tr:hover {
+  background-color: #e0e0e0;
+} */
+
+.status.resolved {
+  color: green;
+}
+
+.status.pending {
+  color: red;
+}
+
+.status.in-progress {
+  color: rgb(255, 0, 153);
+}
+
+.trash-icon {
+  width: 2em;
+  height: 2em;
+  cursor: pointer;
+  margin-right: 0.5em;
+}
+.action {
+  display: flex;
+}
+
+.confirm-button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+  margin: 0.2em 0;
+  cursor: pointer;
+  border-radius: 0.3em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}

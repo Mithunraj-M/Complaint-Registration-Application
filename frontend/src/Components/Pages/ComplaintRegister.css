@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 6%;
+  padding: 20px;
+  border: 2px solid #170707;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
+}
+.Complaint-form {
+  box-sizing: border-box;
+  height: 70vh;
+}
+
+.form-row1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.Label-one {
+  width: 30%; /* Adjust the width as needed */
+  font-weight: bold;
+}
+
+.input-text {
+  width: 70%;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+.button-one {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #004cffdb;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 40%;
+  border-radius: 15px;
+}
+
+.button-one[type="submit"] {
+  margin-right: 10px; /* Add margin between buttons */
+}
+
+#reset {
+  color: #004cffdb;
+  background-color: white;
+  width: 20%;
+  font-weight: bold;
+}
+
+.button-one:hover {
+  background-color: #45a049;
+}

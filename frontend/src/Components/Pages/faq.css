@@ -1,0 +1,77 @@
+.firstbox {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5em;
+  height: 30rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background: lightgray
+    url(/src/Components/Pages/Assets/Images/backgroundweb\ 2.png) 50% / cover
+    no-repeat;
+}
+
+.logo {
+  width: 54.125rem;
+  height: 20.79744rem;
+  flex-shrink: 0;
+}
+
+.secondbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+  gap: 3rem; /* Adjust gap as needed */
+  margin-bottom: -3rem;
+  position: relative;
+  z-index: 2; /* Ensure secondbox is above waves */
+}
+
+.frame31 {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  width: calc(45% - 1.5rem); /* 50% width minus half the gap */
+  color: #000;
+  font-family: Inter;
+  font-size: 1.6875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.frame31 img {
+  width: 3.125rem;
+  height: 3.125rem;
+  flex-shrink: 0;
+}
+
+.frame31 div {
+  display: flex;
+  flex-direction: column;
+}
+
+.frame31 p {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0.56rem;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  margin-top: -22rem; /* Adjust as needed to create overlap */
+  z-index: 1; /* Ensure waves are below secondbox */
+  margin-bottom: 0.1em;
+}
+
+.waves img {
+  width: 100%;
+  object-fit: contain;
+}

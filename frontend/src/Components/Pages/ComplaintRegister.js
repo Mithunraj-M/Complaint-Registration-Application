@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./ComplaintRegister.css";
+import { Navigate } from "react-router-dom";
 
 const ComplaintRegister = () => {
+  const Navigate = useNavigate();
   const location = useLocation();
   const { phoneId } = location.state || ""; // Retrieve phoneId from state
 
@@ -155,15 +157,18 @@ const ComplaintRegister = () => {
   };
 
   return (
+    <>
+    <section className="main-page">
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="form-row1">
-          <label htmlFor="category">
+          <label htmlFor="category" className="text-black rightspace font-bold">
             Category of Complaint:<span style={{ color: "red" }}>*</span>
           </label>
           <select
             id="category"
             name="category"
+            className="input-text"
             value={formData.category}
             onChange={handleChange}
             required
@@ -182,11 +187,12 @@ const ComplaintRegister = () => {
           </select>
         </div>
         {formData.category === "Other" && (
-          <div className="form-row1">
+          <div className="form-row1 text-black rightspace">
             <label htmlFor="othercategory">If others enter the category</label>
             <input
               type="text"
               name="othercategory"
+              className="input-text"
               id="othercategory"
               value={formData.othercategory}
               onChange={handleChange}
@@ -195,12 +201,13 @@ const ComplaintRegister = () => {
           </div>
         )}
         <div className="form-row1">
-          <label htmlFor="state">
+          <label htmlFor="state" className="text-black rightspace font-bold">
             State:<span style={{ color: "red" }}>*</span>
           </label>
           <select
             id="state"
             name="state"
+            className="input-text"
             value={formData.state}
             onChange={handleStateChange}
             required
@@ -213,13 +220,14 @@ const ComplaintRegister = () => {
             ))}
           </select>
         </div>
-        <div className="form-row1">
-          <label htmlFor="district">
+        <div className="form-row1 ">
+          <label htmlFor="district" className="text-black rightspace font-bold">
             District:<span style={{ color: "red" }}>*</span>
           </label>
           <select
             id="district"
             name="district"
+            className="input-text"
             value={formData.district}
             onChange={handleChange}
             required
@@ -233,12 +241,13 @@ const ComplaintRegister = () => {
           </select>
         </div>
         <div className="form-row1">
-          <label htmlFor="pincode">
+          <label htmlFor="pincode" className="text-black rightspace font-bold">
             Pincode:<span style={{ color: "red" }}>*</span>
           </label>
           <select
             id="pincode"
             name="pincode"
+            className="input-text"
             value={formData.pincode}
             onChange={handleChange}
             required
@@ -252,19 +261,20 @@ const ComplaintRegister = () => {
           </select>
         </div>
         <div className="form-row1">
-          <label htmlFor="comment">
+          <label htmlFor="comment" className="text-black rightspace font-bold">
             Comment:<span style={{ color: "red" }}>*</span>
           </label>
           <textarea
             id="comment"
             name="comment"
+            className="input-text"
             value={formData.comment}
             onChange={handleChange}
             required
           />
         </div>
         <div className="form-row1">
-          <label htmlFor="photo">
+          <label htmlFor="photo" className="text-black rightspace font-bold">
             Photo:<span style={{ color: "red" }}>*</span>
           </label>
           <input
@@ -272,18 +282,20 @@ const ComplaintRegister = () => {
             id="photo"
             name="photo"
             accept="image/*"
+            className="mt-4"
             onChange={handleFileChange}
             required
           />
           {renderPreview(formData.photo, "photo")}
         </div>
         <div className="form-row1">
-          <label htmlFor="video">
+          <label htmlFor="video" className="text-black rightspace font-bold">
             Video:<span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="file"
             id="video"
+            className="mt-4 mb-4"
             name="video"
             accept="video/*"
             onChange={handleFileChange}
@@ -291,14 +303,17 @@ const ComplaintRegister = () => {
           />
           {renderPreview(formData.video, "video")}
         </div>
-        <div className="form-buttons">
-          <button type="submit">Submit</button>
-          <button type="button" onClick={handleReset}>
+        <div className="form-buttons flex justify-around text-blue-600 mt-8">
+          <button type="submit" className="font-bold button-one">Submit</button>
+          <button type="button" onClick={handleReset} className=" reset ">
             Reset
           </button>
+          <button className="text-blue-800" onClick={()=>Navigate("/dashboard")}>Return to dashboard</button>
         </div>
       </form>
     </div>
+    </section>
+    </>
   );
 };
 

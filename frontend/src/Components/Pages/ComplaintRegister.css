@@ -1,18 +1,26 @@
+.main-page{
+  min-height: 100vh;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   width: 80%;
-  margin: 0 auto;
+  font-size: larger;
+  margin: 0 auto; 
   margin-top: 6%;
-  padding: 20px;
-  border: 2px solid #170707;
+  padding: 4.5rem;
+  border: 0px solid #170707;
   border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 3);  
 }
+
 .Complaint-form {
   box-sizing: border-box;
   height: 70vh;
 }
+
+
 
 .form-row1 {
   display: flex;
@@ -21,7 +29,7 @@
   margin-bottom: 10px;
 }
 
-.Label-one {
+.rightspace {
   width: 30%; /* Adjust the width as needed */
   font-weight: bold;
 }
@@ -29,8 +37,11 @@
 .input-text {
   width: 70%;
   padding: 8px;
+  margin-bottom: 1.5rem;
   box-sizing: border-box;
-  border-radius: 15px;
+  border: 2px solid grey;
+  border-radius: 1rem;
+
 }
 
 .button-one {

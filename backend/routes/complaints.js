@@ -20,8 +20,8 @@ router.post(
   "/",
   upload.fields([{ name: "photo" }, { name: "video" }]),
   (req, res) => {
-    console.log("Request Body:", req.body);
-    console.log("Request Files:", req.files);
+    // console.log("Request Body:", req.body);
+    // console.log("Request Files:", req.files);
 
     const newComplaint = new Complaint({
       category: req.body.category,
@@ -33,6 +33,7 @@ router.post(
       photo: req.files["photo"] ? req.files["photo"][0].path : "",
       video: req.files["video"] ? req.files["video"][0].path : "",
       phoneId: req.body.phoneId,
+      date: req.body.date,
     });
 
     newComplaint

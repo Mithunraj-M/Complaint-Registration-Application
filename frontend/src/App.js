@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import About from "./Components/Pages/About";
+import AdminDashboard from "./Components/Pages/AdminDashboard";
 import ComplaintRegister from "./Components/Pages/ComplaintRegister";
 import ComplaintView from "./Components/Pages/ComplaintView";
 import Dashboard from "./Components/Pages/Dashboard";
@@ -32,6 +33,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/FeedbackForm" element={<FeedbackForm />}></Route>
         <Route path="/TrackComplaints" element={<TrackComplaints />}></Route>
+        <Route path="/AdminDashboard" element={<AdminDashboard />}></Route>
         <Route
           path="/ComplaintRegister"
           element={<ComplaintRegister />}

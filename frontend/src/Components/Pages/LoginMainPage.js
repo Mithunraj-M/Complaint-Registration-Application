@@ -11,12 +11,12 @@ import "./LoginMainPage.css";
 
 const LoginMainPage = () => {
   // State variables
-  const [isLogin, setIsLogin] = useState(true); // Controls login/signup toggle
-  const [alignEnd, setAlignEnd] = useState(false); // Controls animation alignment
-  const [isFading, setIsFading] = useState(false); // Controls fade animation
-  const [phoneId, setPhoneId] = useState(""); // State to store phone number
+  const [isLogin, setIsLogin] = useState(true);
+  const [alignEnd, setAlignEnd] = useState(false);
+  const [isFading, setIsFading] = useState(false);
+  const [phoneId, setPhoneId] = useState("");
 
-  const navigate = useNavigate(); // Navigation hook
+  const navigate = useNavigate();
 
   // Function to toggle between login and signup forms
   const handleToggle = () => {
@@ -28,21 +28,26 @@ const LoginMainPage = () => {
     }, 500);
   };
 
-  // Function to asynchronously hash passwords using bcrypt
+  // hash passwords using bcrypt
   const encryptPass = async (password) => {
     return await bcrypt.hash(password, 8);
   };
 
-  // Function to clear form data (Note: Direct DOM manipulation is not recommended)
   const clearData = () => {
-    // Consider using React state to manage form inputs instead
+    document.getElementById("signup-first-name").value = "";
+    document.getElementById("signup-last-name").value = "";
+    document.getElementById("signup-email").value = "";
+    document.getElementById("signup-phone").value = "";
+    document.getElementById("signup-dob").value = "";
+    document.getElementById("signup-password").value = "";
+    document.getElementById("signup-confirmpassword").value = "";
   };
 
   // Function to handle login process
   const handleLogin = async () => {
     try {
-      const phone = document.getElementById("login-phone").value; // Get phone number from input
-      const password = document.getElementById("login-password").value; // Get password from input
+      const phone = document.getElementById("login-phone").value;
+      const password = document.getElementById("login-password").value;
 
       // Send login request to the backend API
       const response = await axios.post("http://localhost:5000/api/login", {
@@ -55,7 +60,7 @@ const LoginMainPage = () => {
       // Handle response from the server
       if (response.data.message === "Login successful") {
         setPhoneId(phone); // Store phone number in state
-        navigate("/dashboard", { state: { phoneId: phone } }); // Navigate to dashboard with phoneId
+        navigate("/dashboard", { state: { phoneId: phone } });
       } else {
         window.alert("User not found. Check your phone number or password.");
       }
@@ -65,13 +70,11 @@ const LoginMainPage = () => {
     }
   };
 
-  // Function to validate email format
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  // Function to validate phone number format
   const validatePhoneNumber = (phone) => {
     return phone.length === 10 && /^\d{10}$/.test(phone);
   };

@@ -13,6 +13,7 @@ const ComplaintSchema = new mongoose.Schema(
     phoneId: { type: String },
     status: { type: String, default: "pending" },
     likes: { type: Number, default: 0 },
+    date: { type: String },
   },
   { collection: "Complaints" }
 ); // Explicitly specify the collection name if needed

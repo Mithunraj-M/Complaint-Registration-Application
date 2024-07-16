@@ -60,7 +60,8 @@ const LoginMainPage = () => {
       // Handle response from the server
       if (response.data.message === "Login successful") {
         setPhoneId(phone); // Store phone number in state
-        navigate("/dashboard", { state: { phoneId: phone } });
+        navigate("/AdminDashboard");
+        // navigate("/dashboard", { state: { phoneId: phone } });
       } else {
         window.alert("User not found. Check your phone number or password.");
       }
@@ -125,11 +126,11 @@ const LoginMainPage = () => {
 
       console.log("Signup Response:", response.data);
       window.alert("Signup successful! Please log in."); // Notify user on successful signup
-      clearData(); // Clear form data after successful signup
+      clearData();
     } catch (error) {
       console.error("Signup Error:", error);
       window.alert("An error occurred while signing up. Please try again.");
-      clearData(); // Clear form data on signup error
+      clearData();
     }
   };
 

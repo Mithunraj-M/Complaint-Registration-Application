@@ -80,6 +80,25 @@ router.put("/:id/likes", async (req, res) => {
   }
 });
 
+router.put("/:id/status", async (req, res) => {
+  try {
+    const updateStatus = await Complaint.findByIdAndUpdate(
+      req.params.id,
+      { status: req.body.status },
+      { new: true }
+    );
+    if (!updateStatus) {
+      return res.status(404).json({ message: "id not found" });
+    }
+    res
+      .status(200)
+      .json({ message: "Updation successful", updatedStatus: updateStatus });
+  } catch (error) {
+    console.log("Internal server error", error);
+    res.status(500).json({ message: "Internal Error " });
+  }
+});
+
 // GET route to fetch complaints
 router.get("/", (req, res) => {
   Complaint.find()

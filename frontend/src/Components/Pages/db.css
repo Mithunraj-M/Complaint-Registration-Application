@@ -9,7 +9,29 @@
   flex-shrink: 0;
   background: url(/src/Components/Pages/Assets/Images/online-complaint\ 1.png)
     lightgray 50% / cover no-repeat;
+  
 }
+
+.photo-container {
+  position: relative;
+  
+}
+
+.overlay-button {
+  position: absolute;
+  top: 10%;
+  right: 1%;
+  background-color: #004cffdb;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 995;
+  
+}
+
+
 
 .container {
   display: flex;

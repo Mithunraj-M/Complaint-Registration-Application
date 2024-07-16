@@ -9,14 +9,17 @@ import "./db.css";
 function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { phoneId } = location.state || {}; // Retrieve phoneId from state
+  const { phoneId } = location.state || {}; 
 
   console.log(phoneId);
 
   return (
     <div>
       <section className="main-body">
-        <div className="poster">{/* Your poster content */}</div>
+        <div className="photo-container">
+          <div className="poster">{/* Your poster content */}</div>
+          <button className="overlay-button" onClick={()=> navigate("/")}>Logout</button>
+        </div>
         <div className="container">
           <div className="content">
             <img src={Frame96} alt="Rectangle 273" />

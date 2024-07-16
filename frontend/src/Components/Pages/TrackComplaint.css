@@ -1,4 +1,8 @@
-/* ComplaintTable.css */
+.main-page{
+  min-height: 100vh;
+}
+
+
 #ComplaintHeading {
   text-align: center;
   color: black;

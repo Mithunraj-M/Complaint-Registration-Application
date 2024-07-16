@@ -43,8 +43,7 @@
 .complaint-box {
   border: 1px solid #ccc;
   border-radius: 4px;
-  
-  width: 300px;
+  width: 20%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   margin: 20px;
@@ -80,10 +79,12 @@
   margin-top: 10px;
   background-color: rgb(125 201 236 / 32%);
   padding: 10px;
+  position: relative;
+  bottom: auto;
+  margin-bottom: 0%;
 }
 
 .like-button {
- 
   width:15%;
 }
 

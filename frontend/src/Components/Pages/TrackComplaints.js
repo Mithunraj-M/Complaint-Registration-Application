@@ -39,7 +39,8 @@ export default function Complaints() {
   };
 
   return (
-    <div>
+    <>
+    <section className="main-page">
       <h1 id="ComplaintHeading">Track My Complaint</h1>
 
       <table className="complaint-table">
@@ -102,6 +103,7 @@ export default function Complaints() {
           Return to HomePage
         </button>
       </div>
-    </div>
+    </section>
+    </>  
   );
 }

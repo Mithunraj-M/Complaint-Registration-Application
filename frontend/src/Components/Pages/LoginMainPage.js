@@ -1,4 +1,5 @@
 import axios from "axios";
+import bcrypt from "bcryptjs";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DOB from "./Assets/Icons/dob.png";
@@ -9,13 +10,15 @@ import Phone from "./Assets/Icons/phone.png";
 import "./LoginMainPage.css";
 
 const LoginMainPage = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [alignEnd, setAlignEnd] = useState(false);
-  const [isFading, setIsFading] = useState(false);
-  const [phoneId, setPhoneId] = useState("");
+  // State variables
+  const [isLogin, setIsLogin] = useState(true); // Controls login/signup toggle
+  const [alignEnd, setAlignEnd] = useState(false); // Controls animation alignment
+  const [isFading, setIsFading] = useState(false); // Controls fade animation
+  const [phoneId, setPhoneId] = useState(""); // State to store phone number
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Navigation hook
 
+  // Function to toggle between login and signup forms
   const handleToggle = () => {
     setIsFading(true);
     setTimeout(() => {
@@ -25,33 +28,36 @@ const LoginMainPage = () => {
     }, 500);
   };
 
-  const clearData = () => {
-    document.getElementById("signup-first-name").value = "";
-    document.getElementById("signup-last-name").value = "";
-    document.getElementById("signup-email").value = "";
-    document.getElementById("signup-phone").value = "";
-    document.getElementById("signup-dob").value = "";
-    document.getElementById("signup-password").value = "";
-    document.getElementById("signup-confirmpassword").value = "";
+  // Function to asynchronously hash passwords using bcrypt
+  const encryptPass = async (password) => {
+    return await bcrypt.hash(password, 8);
   };
 
+  // Function to clear form data (Note: Direct DOM manipulation is not recommended)
+  const clearData = () => {
+    // Consider using React state to manage form inputs instead
+  };
+
+  // Function to handle login process
   const handleLogin = async () => {
     try {
-      const phone = document.getElementById("login-phone").value;
-      const password = document.getElementById("login-password").value;
+      const phone = document.getElementById("login-phone").value; // Get phone number from input
+      const password = document.getElementById("login-password").value; // Get password from input
 
+      // Send login request to the backend API
       const response = await axios.post("http://localhost:5000/api/login", {
         phone,
         password,
       });
+
       console.log("Login Response:", response.data);
 
+      // Handle response from the server
       if (response.data.message === "Login successful") {
-        setPhoneId(phone);
-        console.log(phone);
-        navigate("/dashboard", { state: { phoneId: phone } }); // Pass phoneId in the state
+        setPhoneId(phone); // Store phone number in state
+        navigate("/dashboard", { state: { phoneId: phone } }); // Navigate to dashboard with phoneId
       } else {
-        window.alert("User Not found, check your phone number or password");
+        window.alert("User not found. Check your phone number or password.");
       }
     } catch (error) {
       console.error("Login Error:", error);
@@ -59,15 +65,18 @@ const LoginMainPage = () => {
     }
   };
 
+  // Function to validate email format
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
+  // Function to validate phone number format
   const validatePhoneNumber = (phone) => {
     return phone.length === 10 && /^\d{10}$/.test(phone);
   };
 
+  // Function to handle signup process
   const handleSignup = async () => {
     try {
       const firstName = document.getElementById("signup-first-name").value;
@@ -75,41 +84,49 @@ const LoginMainPage = () => {
       const email = document.getElementById("signup-email").value;
       const phone = document.getElementById("signup-phone").value;
       const dob = document.getElementById("signup-dob").value;
-      const password = document.getElementById("signup-password").value;
+      let password = document.getElementById("signup-password").value;
       const confirmPassword = document.getElementById(
         "signup-confirmpassword"
       ).value;
 
+      // Validate password confirmation
       if (password !== confirmPassword) {
         window.alert("Passwords do not match.");
         return;
       }
 
+      // Validate phone number format
       if (!validatePhoneNumber(phone)) {
         window.alert("Phone number must be 10 digits.");
         return;
       }
 
+      // Validate email format
       if (!validateEmail(email)) {
         window.alert("Invalid email format.");
         return;
       }
 
+      // Hash the password before sending it to the server
+      const hashedPassword = await encryptPass(password);
+
+      // Send signup request to the backend API
       const response = await axios.post("http://localhost:5000/api/signup", {
         firstName,
         lastName,
         email,
         phone,
         dob,
-        password,
+        password: hashedPassword,
       });
+
       console.log("Signup Response:", response.data);
-      window.alert("Signup successful! Please log in.");
-      clearData();
+      window.alert("Signup successful! Please log in."); // Notify user on successful signup
+      clearData(); // Clear form data after successful signup
     } catch (error) {
       console.error("Signup Error:", error);
       window.alert("An error occurred while signing up. Please try again.");
-      clearData();
+      clearData(); // Clear form data on signup error
     }
   };
 

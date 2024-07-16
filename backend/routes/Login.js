@@ -1,6 +1,7 @@
 // routes/LoginRoute.js
 const express = require("express");
 const User = require("../models/UserModel");
+const bcrypt = require("bcryptjs");
 
 const router = express.Router();
 
@@ -9,14 +10,13 @@ router.post("/", async (req, res) => {
   const { phone, password } = req.body;
 
   try {
-    // Check if user with provided phone number exists
     const user = await User.findOne({ phone });
     if (!user) {
       return res.status(200).json({ message: "User not found" });
     }
 
-    // Validate password (assuming plain text comparison for simplicity)
-    if (user.password !== password) {
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 

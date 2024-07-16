@@ -2,6 +2,8 @@ import axios from "axios"; // Import axios for HTTP requests
 import React, { useEffect, useState } from "react";
 import like_img from "./Assets/Icons/thumbs.jpg";
 import "./ComplaintView.css";
+import { useNavigate } from "react-router-dom";
+
 
 const ComplaintView = () => {
   const [formData, setFormData] = useState({
@@ -95,6 +97,9 @@ const ComplaintView = () => {
       console.log("could not update", error);
     }
   };
+
+const navigate = useNavigate();
+
   return (
     <div>
       <div className="form-row">
@@ -186,6 +191,7 @@ const ComplaintView = () => {
             ))}
           </div>
         )}
+        <button type="button" onClick={()=>navigate("/dashboard")} className="text-blue-500 navigate-button" >Return to Dashboard</button>
       </div>
     </div>
   );

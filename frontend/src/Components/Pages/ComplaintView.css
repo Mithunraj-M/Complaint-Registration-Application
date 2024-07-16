@@ -1,5 +1,5 @@
 .main-page-complaint{
-  min-height: 100vh;
+  min-height: 120vh;
 }
 
 .form-row {
@@ -47,6 +47,8 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   margin: 20px;
+  position: relative;
+  min-height: 40vh;
 }
 
 .complaint-header {
@@ -62,7 +64,8 @@
   display: flex;
   gap: 10px;
   margin-top: 10px;
-  padding: 10px;
+  padding: 10px;  
+  
 }
 
 .complaint-image {
@@ -79,9 +82,9 @@
   margin-top: 10px;
   background-color: rgb(125 201 236 / 32%);
   padding: 10px;
-  position: relative;
-  bottom: auto;
-  margin-bottom: 0%;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .like-button {
@@ -112,4 +115,9 @@
 
 .button-last:hover{
   color: blue;
+}
+
+.navigate-button{
+  bottom: 0;
+  margin-bottom: 0%;
 }

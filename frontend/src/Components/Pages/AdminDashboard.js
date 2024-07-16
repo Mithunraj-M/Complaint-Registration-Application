@@ -5,6 +5,7 @@ import "./AdminDashboard.css";
 const AdminDashboard = () => {
   const [complaints, setComplaints] = useState([]);
   const [selectedStatuses, setSelectedStatuses] = useState({});
+  const [filterStatus, setFilterStatus] = useState("All"); // State for filter
 
   useEffect(() => {
     const fetchComplaints = async () => {
@@ -57,11 +58,36 @@ const AdminDashboard = () => {
     ));
   };
 
+  const filteredComplaints = complaints.filter((complaint) => {
+    if (filterStatus === "All") {
+      return true; // Show all complaints
+    } else {
+      return complaint.status === filterStatus; // Filter by selected status
+    }
+  });
+
+  const handleFilterChange = (e) => {
+    setFilterStatus(e.target.value);
+  };
+
   return (
     <section className="Main-Page">
       <div className="first-image"></div>
       <div className="main-heading text-center mt-8 text-4xl mb-4">
         Viewing All Received Complaints
+      </div>
+      <div>
+        <label htmlFor="statusFilter">Filter by Status:</label>
+        <select
+          id="statusFilter"
+          value={filterStatus}
+          onChange={handleFilterChange}
+        >
+          <option value="All">All</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+        </select>
       </div>
       <div>
         <table className="complaint-table">
@@ -76,7 +102,7 @@ const AdminDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {complaints.map((complaint, index) => (
+            {filteredComplaints.map((complaint, index) => (
               <tr key={index} className={index % 2 === 0 ? "even" : "odd"}>
                 <td>{complaint._id}</td>
                 <td>{complaint.date}</td>

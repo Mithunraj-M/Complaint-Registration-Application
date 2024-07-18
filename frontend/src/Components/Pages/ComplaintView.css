@@ -1,4 +1,4 @@
-.main-page-complaint{
+.main-page-complaint {
   min-height: 120vh;
 }
 
@@ -28,9 +28,8 @@
 
 .complaints-list {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .complaints-container {
@@ -38,17 +37,44 @@
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  max-width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 
 .complaint-box {
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 20%;
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  box-sizing: border-box;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  margin: 20px;
+  margin: 10px;
   position: relative;
   min-height: 40vh;
+  /* min-width: calc(100% - 20px); */
+}
+
+@media (max-width: 1200px) {
+  .complaint-box {
+    flex: 1 1 calc(33.33% - 20px);
+    max-width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .complaint-box {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .complaint-box {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }
 
 .complaint-header {
@@ -62,10 +88,25 @@
 
 .complaint-content {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-top: 10px;
-  padding: 10px;  
-  
+  padding: 10px;
+  overflow-y: scroll;
+  height: fit-content;
+  width: 100%;
+  max-height: 150px;
+  p{
+    word-wrap: break-word;
+  }
+  img{
+    align-self: center;
+    width:fit-content;
+    height: fit-content;
+  }
+}
+.complaint-content::-webkit-scrollbar{
+  display: none;
 }
 
 .complaint-image {
@@ -88,36 +129,38 @@
 }
 
 .like-button {
-  width:15%;
+  width: 15%;
 }
 
 .complaint-date {
   color: #777;
 }
-#like{
+
+#like {
   width: 20px;
   height: 20px;
-
 }
-#complaint-title{
+
+#complaint-title {
   text-align: center;
 }
-.like-count{
-  
+
+.like-count {
   margin-left: 0px;
 }
 
-.last-button{
+.last-button {
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-.button-last:hover{
+.button-last:hover {
   color: blue;
 }
 
 .navigate-button{
-  bottom: 0;
+  margin-top: auto;
   margin-bottom: 0%;
+  bottom: 0;
 }

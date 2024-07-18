@@ -97,7 +97,7 @@ export default function Complaints() {
       <div className="last-button">
         <button
           type="button"
-          className="text-blue-600 hover:text-blue-800"
+          className="text-blue-600 hover:text-blue-800 mt-4"
           onClick={() => navigate("/dashboard")}
         >
           Return to HomePage

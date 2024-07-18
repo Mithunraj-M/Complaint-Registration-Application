@@ -4,7 +4,6 @@ import like_img from "./Assets/Icons/thumbs.jpg";
 import "./ComplaintView.css";
 import { useNavigate } from "react-router-dom";
 
-
 const ComplaintView = () => {
   const [formData, setFormData] = useState({
     state: "",
@@ -78,6 +77,7 @@ const ComplaintView = () => {
       [name]: value,
     });
   };
+
   const handleLike = async (id) => {
     try {
       const response = await axios.put(
@@ -98,10 +98,12 @@ const ComplaintView = () => {
     }
   };
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
-    <div>
+    <>
+    <section className="main-page-complaint">
+      <h2 className="complaints-header text-4xl mb-0">Complaints</h2>
       <div className="form-row">
         <select
           id="state1"
@@ -154,7 +156,6 @@ const navigate = useNavigate();
         </select>
       </div>
 
-      <h2 className="complaints-header">Complaints</h2>
       <div className="complaints-list">
         {complaints.length === 0 ? (
           <p>No complaints found</p>
@@ -163,8 +164,8 @@ const navigate = useNavigate();
             {complaints.map((complaint) => (
               <div key={complaint._id} className="complaint-box">
                 <div className="complaint-header">
-                  <p> {complaint.state}</p>
-                  <p> {complaint.district}</p>
+                  <p>{complaint.state}</p>
+                  <p>{complaint.district}</p>
                 </div>
                 <h3 id="complaint-title">{complaint.category}</h3>
                 <div className="complaint-content">
@@ -191,9 +192,16 @@ const navigate = useNavigate();
             ))}
           </div>
         )}
-        <button type="button" onClick={()=>navigate("/dashboard")} className="text-blue-500 navigate-button" >Return to Dashboard</button>
+        <button
+          type="button"
+          onClick={() => navigate("/dashboard")}
+          className="navigate-button mb-4 text-blue-600 hover:text-blue-800 mt-4 text-md font-bold "
+        >
+          Return to Dashboard
+        </button>
       </div>
-    </div>
+      </section>
+    </>
   );
 };
 

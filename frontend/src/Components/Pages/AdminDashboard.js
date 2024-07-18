@@ -76,10 +76,11 @@ const AdminDashboard = () => {
       <div className="main-heading text-center mt-8 text-4xl mb-4">
         Viewing All Received Complaints
       </div>
-      <div>
-        <label htmlFor="statusFilter">Filter by Status:</label>
+      <div className="text-center text-xl ">
+        <label htmlFor="statusFilter" className="text-black">Filter by Status: &nbsp;</label>
         <select
           id="statusFilter"
+          className="text-fuchsia-500	"
           value={filterStatus}
           onChange={handleFilterChange}
         >

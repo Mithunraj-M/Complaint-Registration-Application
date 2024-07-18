@@ -167,7 +167,7 @@ const ComplaintRegister = () => {
   return (
     <>
       <section className="main-page">
-        <div className="form">
+        <div className="form mb-4">
           <form onSubmit={handleSubmit}>
             <div className="form-row1">
               <label

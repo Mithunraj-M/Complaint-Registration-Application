@@ -31,18 +31,14 @@
   
 }
 
-
-
 .container {
   display: flex;
   width: 90%;
   flex-direction: row;
   align-items: start;
-  /* gap: 2.5rem; */
   margin: auto;
   margin-top: 5em;
   justify-content: space-between;
-  /* margin-left: 3.75rem; */
 }
 
 .content {

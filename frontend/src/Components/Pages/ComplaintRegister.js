@@ -343,7 +343,9 @@ const ComplaintRegister = () => {
               </button>
               <button
                 className="text-blue-800"
-                onClick={() => Navigate("/dashboard")}
+                onClick={() =>
+                  Navigate("/dashboard", { state: { phoneId: phoneId } })
+                }
               >
                 Return to dashboard
               </button>

@@ -11,6 +11,7 @@ export default function Complaints() {
   const [complaints, setComplaints] = useState([]);
 
   useEffect(() => {
+    console.log(phoneId);
     if (phoneId) {
       axios
         .get(`http://localhost:5000/api/complaints`)
@@ -40,70 +41,72 @@ export default function Complaints() {
 
   return (
     <>
-    <section className="main-page">
-      <h1 id="ComplaintHeading">Track My Complaint</h1>
+      <section className="main-page">
+        <h1 id="ComplaintHeading">Track My Complaint</h1>
 
-      <table className="complaint-table">
-        <thead>
-          <tr>
-            <th>Tracking ID</th>
-            <th>Category</th>
-            <th>Photo</th>
-            <th>Complaint</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {complaints.map((complaint, index) => (
-            <tr key={index} className={index % 2 === 0 ? "even" : "odd"}>
-              <td>{complaint._id}</td>
-              <td>{complaint.category}</td>
-              <td>
-                <img
-                  src={`http://localhost:5000/${complaint.photo}`}
-                  alt="complaint"
-                  style={{ width: "5em", height: "5em" }}
-                />
-              </td>
-              <td className="complaint">{complaint.comment}</td>
-              <td
-                className={`status ${complaint.status
-                  .toLowerCase()
-                  .replace(" ", "-")}`}
-              >
-                {complaint.status}
-              </td>
-              <td className="action">
-                <img
-                  src={trash}
-                  alt="trash bin"
-                  className="trash-icon"
-                  onClick={() => handleDelete(complaint._id)}
-                />
-                {complaint.status === "resolved" && (
-                  <button
-                    className="confirm-button"
-                    onClick={() => handleDelete(complaint._id)}
-                  >
-                    Confirm
-                  </button>
-                )}
-              </td>
+        <table className="complaint-table">
+          <thead>
+            <tr>
+              <th>Tracking ID</th>
+              <th>Category</th>
+              <th>Photo</th>
+              <th>Complaint</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="last-button">
-        <button
-          type="button"
-          className="text-blue-600 hover:text-blue-800 mt-4"
-          onClick={() => navigate("/dashboard")}
-        >
-          Return to HomePage
-        </button>
-      </div>
-    </section>
-    </>  
+          </thead>
+          <tbody>
+            {complaints.map((complaint, index) => (
+              <tr key={index} className={index % 2 === 0 ? "even" : "odd"}>
+                <td>{complaint._id}</td>
+                <td>{complaint.category}</td>
+                <td>
+                  <img
+                    src={`http://localhost:5000/${complaint.photo}`}
+                    alt="complaint"
+                    style={{ width: "5em", height: "5em" }}
+                  />
+                </td>
+                <td className="complaint">{complaint.comment}</td>
+                <td
+                  className={`status ${complaint.status
+                    .toLowerCase()
+                    .replace(" ", "-")}`}
+                >
+                  {complaint.status}
+                </td>
+                <td className="action">
+                  <img
+                    src={trash}
+                    alt="trash bin"
+                    className="trash-icon"
+                    onClick={() => handleDelete(complaint._id)}
+                  />
+                  {complaint.status === "resolved" && (
+                    <button
+                      className="confirm-button"
+                      onClick={() => handleDelete(complaint._id)}
+                    >
+                      Confirm
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div className="last-button">
+          <button
+            type="button"
+            className="text-blue-600 hover:text-blue-800 mt-4"
+            onClick={() =>
+              navigate("/dashboard", { state: { phoneId: phoneId } })
+            }
+          >
+            Return to HomePage
+          </button>
+        </div>
+      </section>
+    </>
   );
 }

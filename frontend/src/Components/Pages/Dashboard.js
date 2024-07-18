@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Frame152 from "./Assets/Images/Frame 152.png";
 import Frame154 from "./Assets/Images/Frame 154.png";
@@ -9,16 +9,23 @@ import "./db.css";
 function Dashboard() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { phoneId } = location.state || {}; 
+  const [phone, setPhone] = useState("");
+  const { phoneId } = location.state || {};
 
   console.log(phoneId);
+
+  useEffect(() => {
+    if (phoneId) setPhone(phoneId);
+  }, [phoneId]);
 
   return (
     <div>
       <section className="main-body">
         <div className="photo-container">
           <div className="poster">{/* Your poster content */}</div>
-          <button className="overlay-button" onClick={()=> navigate("/")}>Logout</button>
+          <button className="overlay-button" onClick={() => navigate("/")}>
+            Logout
+          </button>
         </div>
         <div className="container">
           <div className="content">
@@ -26,7 +33,7 @@ function Dashboard() {
             <button
               className="button"
               onClick={() =>
-                navigate("/ComplaintRegister", { state: { phoneId: phoneId } })
+                navigate("/ComplaintRegister", { state: { phoneId: phone } })
               }
             >
               Lodge Complaint
@@ -58,7 +65,9 @@ function Dashboard() {
             <img src={Last} alt="Rectangle 273" />
             <button
               className="button"
-              onClick={() => navigate("/FeedbackForm")}
+              onClick={() =>
+                navigate("/FeedbackForm", { state: { phoneId: phoneId } })
+              }
             >
               Feedback
             </button>

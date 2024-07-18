@@ -60,8 +60,9 @@ const LoginMainPage = () => {
       // Handle response from the server
       if (response.data.message === "Login successful") {
         setPhoneId(phone); // Store phone number in state
-        navigate("/AdminDashboard");
-        // navigate("/dashboard", { state: { phoneId: phone } });
+        // navigate("/AdminDashboard");
+        console.log("this is the phone number ", phone);
+        navigate("/dashboard", { state: { phoneId: phone } });
       } else {
         window.alert("User not found. Check your phone number or password.");
       }
@@ -99,22 +100,18 @@ const LoginMainPage = () => {
         return;
       }
 
-      // Validate phone number format
       if (!validatePhoneNumber(phone)) {
         window.alert("Phone number must be 10 digits.");
         return;
       }
 
-      // Validate email format
       if (!validateEmail(email)) {
         window.alert("Invalid email format.");
         return;
       }
 
-      // Hash the password before sending it to the server
       const hashedPassword = await encryptPass(password);
 
-      // Send signup request to the backend API
       const response = await axios.post("http://localhost:5000/api/signup", {
         firstName,
         lastName,
@@ -125,7 +122,7 @@ const LoginMainPage = () => {
       });
 
       console.log("Signup Response:", response.data);
-      window.alert("Signup successful! Please log in."); // Notify user on successful signup
+      window.alert("Signup successful! Please log in.");
       clearData();
     } catch (error) {
       console.error("Signup Error:", error);

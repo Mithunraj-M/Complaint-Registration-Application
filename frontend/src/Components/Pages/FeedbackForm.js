@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FeedEmail from "./Assets/Icons/FeedEmail.png";
 import UserName from "./Assets/Icons/username.png";
 import "./FeedbackForm.css";
 
 function FeedbackForm() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { phoneId } = location.state || { phoneId: "" };
 
   const [formData, setFormData] = useState({
     name: "",
@@ -104,7 +106,9 @@ function FeedbackForm() {
             <button
               type="button"
               className="px-4 py-2 text-blue-500 hover:text-blue-700 focus:outline-none"
-              onClick={() => navigate("/dashboard")}
+              onClick={() =>
+                navigate("/dashboard", { state: { phoneId: phoneId } })
+              }
             >
               Cancel and Return
             </button>

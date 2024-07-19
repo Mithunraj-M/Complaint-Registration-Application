@@ -1,0 +1,65 @@
+.main-page-aboutcontent {
+    min-height: 130vh;
+    margin-bottom: 20rem;
+}
+
+.containerAbout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+}
+
+.divisionAbout {
+    width: 30%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s;
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+}
+
+.middleAbout {
+    width: 45%;
+    height: 65%;
+    transform: scale(0.8);
+    background-color: rgb(203, 242, 255);
+}
+
+.behindAbout {
+    background-color: rgb(255, 220, 220);
+}
+
+.divisionAbout:nth-child(1) {
+    left: 0;
+}
+
+.divisionAbout:nth-child(2) {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.divisionAbout:nth-child(3) {
+    right: 0;
+}
+
+.divisionImage {
+    width: 60%;
+    height: auto;
+    max-height: 50%;
+}
+
+.divisionText {
+    padding: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

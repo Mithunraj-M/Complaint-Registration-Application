@@ -27,7 +27,7 @@ function Dashboard() {
             Logout
           </button>
         </div>
-        <div className="container">
+        <div className="container-db">
           <div className="content">
             <img src={Frame96} alt="Rectangle 273" />
             <button

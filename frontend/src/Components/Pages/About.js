@@ -5,6 +5,7 @@ import mail_img from "./Assets/Icons/mail_icon.jpg";
 import about_img from "./Assets/Images/about_img.jpg";
 import "./Content.css";
 import Timeline from "./Timeline";
+import AboutContentSwap from "./AboutContentSwap"
 
 const About = () => {
   return (
@@ -17,7 +18,9 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div className="abt_content"></div>
+      <div className="abt_content">
+        <AboutContentSwap/>
+      </div>
       <div className="guidance">
         <h1 className="text-center">How does it work?</h1>
         <Timeline></Timeline>

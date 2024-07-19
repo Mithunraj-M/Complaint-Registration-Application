@@ -10,15 +10,12 @@ import Phone from "./Assets/Icons/phone.png";
 import "./LoginMainPage.css";
 
 const LoginMainPage = () => {
-  // State variables
   const [isLogin, setIsLogin] = useState(true);
   const [alignEnd, setAlignEnd] = useState(false);
   const [isFading, setIsFading] = useState(false);
-  const [phoneId, setPhoneId] = useState("");
 
   const navigate = useNavigate();
 
-  // Function to toggle between login and signup forms
   const handleToggle = () => {
     setIsFading(true);
     setTimeout(() => {
@@ -28,28 +25,11 @@ const LoginMainPage = () => {
     }, 500);
   };
 
-  // hash passwords using bcrypt
-  const encryptPass = async (password) => {
-    return await bcrypt.hash(password, 8);
-  };
-
-  const clearData = () => {
-    document.getElementById("signup-first-name").value = "";
-    document.getElementById("signup-last-name").value = "";
-    document.getElementById("signup-email").value = "";
-    document.getElementById("signup-phone").value = "";
-    document.getElementById("signup-dob").value = "";
-    document.getElementById("signup-password").value = "";
-    document.getElementById("signup-confirmpassword").value = "";
-  };
-
-  // Function to handle login process
   const handleLogin = async () => {
     try {
       const phone = document.getElementById("login-phone").value;
       const password = document.getElementById("login-password").value;
 
-      // Send login request to the backend API
       const response = await axios.post("http://localhost:5000/api/login", {
         phone,
         password,
@@ -57,11 +37,7 @@ const LoginMainPage = () => {
 
       console.log("Login Response:", response.data);
 
-      // Handle response from the server
       if (response.data.message === "Login successful") {
-        setPhoneId(phone); // Store phone number in state
-        // navigate("/AdminDashboard");
-        console.log("this is the phone number ", phone);
         navigate("/dashboard", { state: { phoneId: phone } });
       } else {
         window.alert("User not found. Check your phone number or password.");
@@ -81,7 +57,6 @@ const LoginMainPage = () => {
     return phone.length === 10 && /^\d{10}$/.test(phone);
   };
 
-  // Function to handle signup process
   const handleSignup = async () => {
     try {
       const firstName = document.getElementById("signup-first-name").value;
@@ -94,7 +69,6 @@ const LoginMainPage = () => {
         "signup-confirmpassword"
       ).value;
 
-      // Validate password confirmation
       if (password !== confirmPassword) {
         window.alert("Passwords do not match.");
         return;
@@ -110,7 +84,7 @@ const LoginMainPage = () => {
         return;
       }
 
-      const hashedPassword = await encryptPass(password);
+      const hashedPassword = await bcrypt.hash(password, 8);
 
       const response = await axios.post("http://localhost:5000/api/signup", {
         firstName,
@@ -129,6 +103,16 @@ const LoginMainPage = () => {
       window.alert("An error occurred while signing up. Please try again.");
       clearData();
     }
+  };
+
+  const clearData = () => {
+    document.getElementById("signup-first-name").value = "";
+    document.getElementById("signup-last-name").value = "";
+    document.getElementById("signup-email").value = "";
+    document.getElementById("signup-phone").value = "";
+    document.getElementById("signup-dob").value = "";
+    document.getElementById("signup-password").value = "";
+    document.getElementById("signup-confirmpassword").value = "";
   };
 
   return (
@@ -191,6 +175,15 @@ const LoginMainPage = () => {
                   Sign Up
                 </button>
               </div>
+              {/* Only show Admin Login button in User Login section */}
+              <button
+                type="button"
+                onClick={() => navigate("/AdminLoginPage")}
+                className="w-full text-red-400 hover:text-red-500 font-bold text-md py-2 rounded-full mt-10 "
+>
+  For Admin Login Click Here
+</button>
+
             </div>
           ) : (
             <div className="SignUp p-10 pt-1">

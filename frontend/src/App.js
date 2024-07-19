@@ -12,6 +12,7 @@ import FeedbackForm from "./Components/Pages/FeedbackForm";
 import Home from "./Components/Pages/Home";
 import TrackComplaints from "./Components/Pages/TrackComplaints";
 import Tutorial from "./Components/Pages/Tutorial";
+import AdminLoginPage from "./Components/Pages/AdminLoginPage"
 
 function App() {
   const [phoneId, setPhoneId] = useState("");
@@ -34,11 +35,9 @@ function App() {
         <Route path="/FeedbackForm" element={<FeedbackForm />}></Route>
         <Route path="/TrackComplaints" element={<TrackComplaints />}></Route>
         <Route path="/AdminDashboard" element={<AdminDashboard />}></Route>
-        <Route
-          path="/ComplaintRegister"
-          element={<ComplaintRegister />}
-        ></Route>
+        <Route path="/ComplaintRegister" element={<ComplaintRegister />}></Route>
         <Route path="/ComplaintView" element={<ComplaintView />}></Route>
+        <Route path="/AdminLoginPage" element={<AdminLoginPage/>}></Route>
       </Routes>
       <Footer />
     </div>

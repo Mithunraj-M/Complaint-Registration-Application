@@ -7,6 +7,7 @@ const app = express();
 const cors = require("cors"); // Import cors
 const loginRouter = require("./routes/Login");
 const FeedbackRouter = require("./routes/FeedbackRoutes");
+const AdminRouter = require("./routes/AdminRoutes");
 
 // Middleware
 app.use(bodyParser.json());
@@ -37,6 +38,7 @@ app.use("/api/complaints", complaints);
 app.use("/api/signup", signupRouter); // Use the sign-up route
 app.use("/api/login", loginRouter);
 app.use("/api/feedback", FeedbackRouter);
+app.use("/api/admin/login", AdminRouter);
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

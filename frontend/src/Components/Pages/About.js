@@ -1,5 +1,5 @@
 import React from "react";
-import call_img from "./Assets/Icons/call_icon.png";
+import call_img from "./Assets/Icons/call_icon.jpg";
 import loc_img from "./Assets/Icons/location_icon.jpg";
 import mail_img from "./Assets/Icons/mail_icon.jpg";
 import about_img from "./Assets/Images/about_img.jpg";

@@ -1,3 +1,33 @@
-.view{
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    align-items: center;
+    margin-bottom: 10rem;
+}
+
+.container > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
+    max-width: 100%; /* Adjust the max-width as per your requirement */
+    padding: 1rem;
+}
+
+.container > div:nth-child(odd) {
+    flex-direction: row;
+}
+
+.container > div:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.view {
+    width: 50%;
+}
+
+.text-container {
+    width: 50%;
 }

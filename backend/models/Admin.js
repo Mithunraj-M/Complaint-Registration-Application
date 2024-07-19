@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const AdminSchema = new mongoose.Schema(
   {
     email: { type: String },
@@ -7,4 +8,5 @@ const AdminSchema = new mongoose.Schema(
   },
   { collection: "Admin" }
 );
+
 module.exports = mongoose.model("Admin", AdminSchema);

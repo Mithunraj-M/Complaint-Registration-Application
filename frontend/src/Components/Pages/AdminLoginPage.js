@@ -1,12 +1,48 @@
-import React from "react";
-import EmailIcon from "./Assets/Icons/email.png"; 
-import PhoneIcon from "./Assets/Icons/phone.png"; 
-import PasswordIcon from "./Assets/Icons/pass.png"; 
-import BackgroundImage from "./Assets/Images/bgbgbg.png"; 
+import axios from "axios";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import EmailIcon from "./Assets/Icons/email.png";
+import PasswordIcon from "./Assets/Icons/pass.png";
+import PhoneIcon from "./Assets/Icons/phone.png";
+import BackgroundImage from "./Assets/Images/bgbgbg.png";
 
 function LoginPage() {
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async () => {
+    try {
+      if (!email || !phone || !password) {
+        window.alert("Please fill in all fields.");
+        return;
+      }
+
+      const response = await axios.post(
+        "http://localhost:5000/api/admin/Adminlogin",
+        {
+          email,
+          phone,
+          password,
+        }
+      );
+
+      console.log("Login Response:", response.data);
+
+      if (response.data.message === "Login successful") {
+        navigate("/AdminDashboard");
+      } else {
+        window.alert(
+          "Invalid credentials. Check your email, phone number, or password."
+        );
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      window.alert("An error occurred while logging in. Please try again.");
+    }
+  };
 
   return (
     <div className="flex h-screen">
@@ -44,6 +80,8 @@ function LoginPage() {
                 type="text"
                 className="w-full outline-none focus:border-blue-500"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -54,21 +92,30 @@ function LoginPage() {
                 type="text"
                 className="w-full outline-none focus:border-blue-500"
                 placeholder="Phone Number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
           <div className="mb-6">
             <div className="flex items-center border-b border-gray-500 py-2">
-              <img src={PasswordIcon} alt="Password Icon" className="w-6 h-6 mr-3" />
+              <img
+                src={PasswordIcon}
+                alt="Password Icon"
+                className="w-6 h-6 mr-3"
+              />
               <input
                 type="password"
                 className="w-full outline-none focus:border-blue-500"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
           <button
             className="w-full bg-blue-500 text-white font-bold text-xl py-2 rounded-full hover:bg-blue-600"
+            onClick={handleSubmit}
           >
             Login
           </button>
@@ -76,7 +123,7 @@ function LoginPage() {
             <button
               type="button"
               className="text-black text-center border border-gray-400 py-2 px-4 rounded hover:bg-gray-200"
-              onClick={() => navigate('/Home')}
+              onClick={() => navigate("/Home")}
             >
               Click Here to User Login
             </button>

@@ -1,18 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+
 const complaints = require("./routes/complaints");
-const signupRouter = require("./routes/Signup"); // Import the sign-up route
-const app = express();
-const cors = require("cors"); // Import cors
+const signupRouter = require("./routes/Signup");
 const loginRouter = require("./routes/Login");
 const FeedbackRouter = require("./routes/FeedbackRoutes");
 const AdminRouter = require("./routes/AdminRoutes");
 
+const app = express();
+
 // Middleware
 app.use(bodyParser.json());
-app.use(cors()); // Use cors middleware
+app.use(cors());
 app.use("/uploads", express.static("uploads"));
+
 // MongoDB connection
 mongoose
   .connect(
@@ -35,10 +38,11 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/complaints", complaints);
-app.use("/api/signup", signupRouter); // Use the sign-up route
+app.use("/api/signup", signupRouter);
 app.use("/api/login", loginRouter);
 app.use("/api/feedback", FeedbackRouter);
-app.use("/api/admin/login", AdminRouter);
+app.use("/api/admin", AdminRouter); // Ensure the base route is /api/admin
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

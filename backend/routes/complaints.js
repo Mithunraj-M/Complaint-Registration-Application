@@ -100,13 +100,28 @@ router.put("/:id/status", async (req, res) => {
 });
 
 // GET route to fetch complaints
-router.get("/", (req, res) => {
-  Complaint.find()
-    .then((complaints) => res.json(complaints))
-    .catch((err) => {
-      console.error("Error fetching complaints:", err);
-      res.status(400).json({ error: err.message });
-    });
+router.get("/", async (req, res) => {
+  try {
+    const query = {};
+
+    if (req.query.state && req.query.state !== "All") {
+      query.state = req.query.state;
+    }
+
+    if (req.query.district && req.query.district !== "All") {
+      query.district = req.query.district;
+    }
+
+    if (req.query.pincode && req.query.pincode !== "All") {
+      query.pincode = req.query.pincode;
+    }
+
+    const complaints = await Complaint.find(query);
+    res.json(complaints);
+  } catch (err) {
+    console.error("Error fetching complaints:", err);
+    res.status(400).json({ error: err.message });
+  }
 });
 
 module.exports = router;

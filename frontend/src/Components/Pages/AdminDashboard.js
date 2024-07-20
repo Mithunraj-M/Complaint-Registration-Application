@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 const stateData = {
   "Tamil Nadu": {
@@ -132,29 +133,19 @@ const AdminDashboard = () => {
     }
   });
 
+  const navigate = useNavigate();
+
   return (
     <section className="Main-Page">
+      <div>
       <div className="first-image"></div>
-      <div className="main-heading text-center mt-8 text-4xl mb-4">
+      <button className="logout-overlay" onClick={()=> navigate("/")}>Logout</button>
+      </div>
+      
+      <div className="main-heading text-center mt-8 text-4xl ">
         Viewing All Received Complaints
       </div>
-      <div className="text-center text-xl">
-        <label htmlFor="statusFilter" className="text-black">
-          Filter by Status: &nbsp;
-        </label>
-        <select
-          id="statusFilter"
-          className="text-fuchsia-500"
-          value={filterStatus}
-          onChange={handleFilterChange}
-        >
-          <option value="All">All</option>
-          <option value="Resolved">Resolved</option>
-          <option value="Pending">Pending</option>
-          <option value="In Progress">In Progress</option>
-        </select>
-      </div>
-      <div className="form-row">
+      <div className="form-row flex align-center justify-center">
         <select
           id="state"
           value={filters.state}
@@ -206,7 +197,23 @@ const AdminDashboard = () => {
             ))}
         </select>
       </div>
-      <div>
+      <div className="text-center text-xl">
+        <label htmlFor="statusFilter" className="text-black">
+          Filter by Status: &nbsp;
+        </label>
+        <select
+          id="statusFilter"
+          className="text-fuchsia-500"
+          value={filterStatus}
+          onChange={handleFilterChange}
+        >
+          <option value="All">All</option>
+          <option value="Resolved">Resolved</option>
+          <option value="Pending">Pending</option>
+          <option value="In Progress">In Progress</option>
+        </select>
+      </div>
+      <div className="mb-8">
         <table className="complaint-table">
           <thead>
             <tr>

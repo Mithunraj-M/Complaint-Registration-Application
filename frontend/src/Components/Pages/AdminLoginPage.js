@@ -56,10 +56,11 @@ function LoginPage() {
             Welcome To Indian Complaint Box!
           </h2>
           <p className="text-lg text-gray-600">
-            Note: You are logging into the Indian Government Portal, <br />
-            Moving forward would make you liable to any and all threats imposed
-            to Government <br />
-            And you would accept the risk voluntarily.
+            Note: Logging into the Admin Portal indicates your acceptance of{" "}
+            <br />
+            responsibility for all actions taken.
+            <br></br>Unauthorized access may result in legal consequences..{" "}
+            <br />
           </p>
         </div>
       </div>

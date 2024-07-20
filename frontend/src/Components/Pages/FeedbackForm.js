@@ -42,10 +42,9 @@ function FeedbackForm() {
   return (
     <div
       className="min-h-screen flex flex-col items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('bgbgbg.png')" }}
-    >
-      <h2 className="text-2xl font-bold mb-6 text-center">Feedback Form</h2>
-      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+      style={{ backgroundImage: "url('./frontend/src/Components/Pages/Assets/Images/bgbgbg.png')" }} >
+      <h2 className="text-2xl font-bold mb-6 text-center text-red">Feedback Form</h2>
+      <div className="form-container bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
         <form onSubmit={handleSubmit}>
           <div className="mb-4 flex items-center">
             <img src={UserName} alt="Name Icon" className="w-6 h-6 mr-2" />

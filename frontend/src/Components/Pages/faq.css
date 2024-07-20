@@ -1,3 +1,4 @@
+/* General styles */
 .firstbox {
   display: flex;
   width: 100%;
@@ -40,6 +41,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  word-wrap: break-word; /* Ensure text wraps within the container */
 }
 
 .frame31 img {
@@ -74,4 +76,102 @@
 .waves img {
   width: 100%;
   object-fit: contain;
+}
+
+/* Media queries */
+
+/* For large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .secondbox {
+    width: 80%;
+    gap: 3rem;
+  }
+
+  .frame31 {
+    width: calc(45% - 1.5rem);
+  }
+}
+
+/* For medium devices (tablets, 768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .secondbox {
+    width: 85%;
+    gap: 2rem;
+  }
+
+  .frame31 {
+    width: calc(48% - 1rem);
+    font-size: 1.5rem;
+  }
+
+  .frame31 p {
+    font-size: 1.25rem;
+  }
+}
+
+/* For small devices (landscape phones, 600px to 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+  .secondbox {
+    width: 90%;
+    gap: 1.5rem;
+    margin-bottom: 10rem;
+  }
+
+  .frame31 {
+    width: calc(100% - 1.5rem);
+    font-size: 1.25rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .frame31 img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .frame31 p {
+    font-size: 1rem;
+  }
+}
+
+/* For extra small devices (portrait phones, less than 600px) */
+@media (max-width: 599px) {
+  .firstbox {
+    height: auto;
+    padding: 1rem;
+  }
+
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .secondbox {
+    width: 95%;
+    gap: 1rem;
+    margin-bottom: 5rem;
+  }
+
+  .frame31 {
+    width: 100%;
+    font-size: 1rem;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .frame31 img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .frame31 p {
+    font-size: 0.875rem;
+  }
+
+  .waves {
+    margin-top: -10rem;
+    width:100%; /* Adjust for better overlap on smaller screens */
+  }
 }

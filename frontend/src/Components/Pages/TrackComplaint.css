@@ -1,7 +1,6 @@
-.main-page{
+.main-page {
   min-height: 100vh;
 }
-
 
 #ComplaintHeading {
   text-align: center;
@@ -86,6 +85,7 @@ tbody tr.odd {
   cursor: pointer;
   margin-right: 0.5em;
 }
+
 .action {
   display: flex;
 }
@@ -103,4 +103,106 @@ tbody tr.odd {
   cursor: pointer;
   border-radius: 0.3em;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries */
+
+/* For large screens */
+@media (max-width: 1200px) {
+  th,
+  td {
+    padding: 0.8em;
+    font-size: 1.4em;
+  }
+
+  td img {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .confirm-button {
+    padding: 0.4em 0.8em;
+    font-size: 0.9em;
+  }
+}
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+  table.complaint-table {
+    width: 90%;
+  }
+
+  th,
+  td {
+    padding: 0.7em;
+    font-size: 1.2em;
+  }
+
+  td img {
+    width: 2em;
+    height: 2em;
+  }
+
+  .confirm-button {
+    padding: 0.3em 0.6em;
+    font-size: 0.8em;
+  }
+
+  td.complaint {
+    max-width: 12em;
+  }
+}
+
+/* For large mobile devices */
+@media (max-width: 768px) {
+  table.complaint-table {
+    width: 95%;
+  }
+
+  th,
+  td {
+    padding: 0.6em;
+    font-size: 1.1em;
+  }
+
+  td img {
+    width: 1.8em;
+    height: 1.8em;
+  }
+
+  .confirm-button {
+    padding: 0.2em 0.5em;
+    font-size: 0.7em;
+  }
+
+  td.complaint {
+    max-width: 10em;
+  }
+}
+
+/* For small mobile devices */
+@media (max-width: 480px) {
+  table.complaint-table {
+    width: 100%;
+  }
+
+  th,
+  td {
+    padding: 0.5em;
+    font-size: 1em;
+  }
+
+  td img {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .confirm-button {
+    padding: 0.2em 0.4em;
+    font-size: 0.6em;
+  }
+
+  td.complaint {
+    max-width: 8em;
+  }
 }

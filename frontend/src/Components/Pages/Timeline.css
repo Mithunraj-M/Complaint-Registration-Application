@@ -103,7 +103,15 @@ body {
 }
 /*small device style*/
 
+@media (min-width:767) {
+  .timeline{
+    margin-top: 100rem;
+  }
+  
+}
+
 @media (max-width: 767px) {
+
   .timeline-content {
     margin-left: 1.5em;
   }

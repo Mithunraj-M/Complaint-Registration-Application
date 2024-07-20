@@ -1,9 +1,44 @@
-.foot{
+.foot {
     text-align: center;
-    padding:2px;
-    background-color: rgb(125 201 236 / 32%);
-    margin-bottom: 0%;
-    position: absolute;
+    padding: 2px;
+    background-color: rgba(125, 201, 236, 0.32); /* Converted to rgba for better clarity */
+    margin-bottom: 0;
     width: 100%;
-    margin-top: auto;
-}
+    bottom: 0; /* Ensures footer stays at the bottom of the page */
+    left: 0; /* Aligns footer to the left edge of the page */
+  }
+  
+  /* Media Queries */
+  
+  /* For large screens */
+  @media (min-width: 1200px) {
+    .foot {
+      padding: 5px;
+      background-color: rgba(125, 201, 236, 0.32); /* Maintained */
+    }
+  }
+  
+  /* For tablets and smaller screens */
+  @media (max-width: 1024px) {
+    .foot {
+      padding: 4px;
+      background-color: rgba(125, 201, 236, 0.32); /* Maintained */
+    }
+  }
+  
+  /* For large mobile devices */
+  @media (max-width: 768px) {
+    .foot {
+      padding: 3px;
+      background-color: rgba(125, 201, 236, 0.32); /* Maintained */
+    }
+  }
+  
+  /* For small mobile devices */
+  @media (max-width: 480px) {
+    .foot {
+      padding: 2px;
+      background-color: rgba(125, 201, 236, 0.32); /* Maintained */
+    }
+  }
+  

@@ -1,5 +1,6 @@
+/* General styles */
 .main-body {
-  height: 110vh;
+  min-height: 110vh;
 }
 
 .poster {
@@ -9,12 +10,10 @@
   flex-shrink: 0;
   background: url(/src/Components/Pages/Assets/Images/online-complaint\ 1.png)
     lightgray 50% / cover no-repeat;
-  
 }
 
 .photo-container {
   position: relative;
-  
 }
 
 .overlay-button {
@@ -28,7 +27,6 @@
   padding: 5px 10px;
   cursor: pointer;
   z-index: 995;
-  
 }
 
 .container-db {
@@ -38,13 +36,8 @@
   align-items: start;
   margin: auto;
   margin-top: 5em;
+  margin-bottom: 5rem;
   justify-content: space-between;
-}
-
-@media  (max-width:600px) {
-  .container{
-    flex-direction: column;
-  }
 }
 
 .content {
@@ -90,4 +83,48 @@
 .button:hover {
   background-color: #007bff;
   color: #fff;
+}
+
+@media (min-width: 1200px) {
+  .container-db {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .container-db {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .content {
+    width: 45%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  .container-db {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 599px) {
+  .container-db {
+    flex-direction: column;
+  }
+
+  .content {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
 }

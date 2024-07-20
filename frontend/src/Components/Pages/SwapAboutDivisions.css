@@ -1,18 +1,18 @@
 .main-page-aboutcontent {
     min-height: 130vh;
-    margin-bottom: 20rem;
-}
-
-.containerAbout {
+    padding-bottom: 20rem;
+  }
+  
+  .containerAbout {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     position: relative;
     width: 100%;
-}
-
-.divisionAbout {
+  }
+  
+  .divisionAbout {
     width: 45%;
     height: 65%;
     display: flex;
@@ -27,46 +27,107 @@
     position: absolute;
     overflow: hidden;
     text-align: center;
-}
-
-.middleAbout {
+  }
+  
+  .middleAbout {
     width: 45%;
     height: 65%;
     background-color: rgb(203, 242, 255);
     transform: scale(1.1);
-}
-
-.behindAbout {
+  }
+  
+  .behindAbout {
     background-color: rgb(255, 220, 220);
-}
-
-.divisionAbout:nth-child(1) {
+  }
+  
+  .divisionAbout:nth-child(1) {
     left: 0;
-}
-
-.divisionAbout:nth-child(2) {
+  }
+  
+  .divisionAbout:nth-child(2) {
     left: 50%;
     transform: translateX(-50%);
-}
-
-.divisionAbout:nth-child(3) {
+  }
+  
+  .divisionAbout:nth-child(3) {
     right: 0;
-}
-
-.divisionImage {
+  }
+  
+  .divisionImage {
     width: 60%;
     height: auto;
     max-height: 50%;
     transition: transform 0.5s;
-}
-
-.divisionText {
+  }
+  
+  .divisionText {
     padding: 1rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     transition: transform 0.5s;
+  }
+  
+  .middleAbout .divisionText,
+  .middleAbout .divisionImage {
+    transform: none;
+  }
+  
+  /* Media Queries */
+  
+  /* For tablets and smaller screens */
+@media (min-width:1024px) {
+    .main-page-aboutcontent{
+        margin-bottom: 100%;
+    }
+    
 }
 
-.middleAbout .divisionText, 
-.middleAbout .divisionImage {
-    transform: none;
-}
+  @media (max-width: 1024px) {
+    .containerAbout {
+      flex-direction: column;
+      height: auto;
+      margin-bottom: 100%;
+    }
+  
+    .divisionAbout {
+      width: 80%;
+      height: auto;
+      position: relative;
+      left: auto;
+      right: auto;
+      transform: none;
+      margin-bottom: 2rem;
+    }
+  
+    .middleAbout {
+      width: 80%;
+      transform: none;
+    }
+  }
+  
+  /* For large mobile devices */
+  @media (max-width: 768px) {
+    .divisionAbout {
+      width: 100%;
+      font-size: 18px;
+    }
+  
+    .middleAbout {
+      width: 100%;
+    }
+  }
+  
+  /* For small mobile devices */
+  @media (max-width: 480px) {
+    .divisionAbout {
+      font-size: 16px;
+    }
+  
+    .middleAbout {
+      width: 100%;
+    }
+  
+    .divisionText {
+      font-size: 14px;
+    }
+  }
+  

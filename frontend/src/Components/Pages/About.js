@@ -1,11 +1,11 @@
 import React from "react";
+import AboutContentSwap from "./AboutContentSwap";
 import call_img from "./Assets/Icons/call_icon.jpg";
 import loc_img from "./Assets/Icons/location_icon.jpg";
 import mail_img from "./Assets/Icons/mail_icon.jpg";
 import about_img from "./Assets/Images/about_img.jpg";
 import "./Content.css";
 import Timeline from "./Timeline";
-import AboutContentSwap from "./AboutContentSwap"
 
 const About = () => {
   return (
@@ -19,9 +19,9 @@ const About = () => {
         </div>
       </div>
       <div className="abt_content">
-        <AboutContentSwap/>
+        <AboutContentSwap />
       </div>
-      <div className="guidance">
+      <div className="guidance" mt-8>
         <h1 className="text-center">How does it work?</h1>
         <Timeline></Timeline>
       </div>

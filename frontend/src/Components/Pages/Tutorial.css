@@ -22,6 +22,7 @@
 
 .container > div:nth-child(even) {
     flex-direction: row-reverse;
+    gap: 1.6rem;
 }
 
 .view {

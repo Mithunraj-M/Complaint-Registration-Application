@@ -321,7 +321,7 @@ const ComplaintRegister = () => {
                 htmlFor="video"
                 className="text-black rightspace font-bold"
               >
-                Video:<span style={{ color: "red" }}>*</span>
+                Video:
               </label>
               <input
                 type="file"
@@ -330,7 +330,6 @@ const ComplaintRegister = () => {
                 name="video"
                 accept="video/*"
                 onChange={handleFileChange}
-                required
               />
               {renderPreview(formData.video, "video")}
             </div>

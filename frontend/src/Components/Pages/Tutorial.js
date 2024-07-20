@@ -10,7 +10,7 @@ import "./Tutorial.css";
 const Tutorial = () => {
   return (
     <div className="container">
-            <h1 className="text-center text-5xl font-bold mb-8">How to Use the Indian Complaint Box Portal</h1>
+            <h1 className="text-center text-5xl font-bold mb-8 mt-8" >How to Use the Indian Complaint Box Portal</h1>
       <div>
         <div className="text-container">
           <h1>Step 1:</h1>

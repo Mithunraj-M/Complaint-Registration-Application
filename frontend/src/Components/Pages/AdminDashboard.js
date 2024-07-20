@@ -77,7 +77,9 @@ const AdminDashboard = () => {
         Viewing All Received Complaints
       </div>
       <div className="text-center text-xl ">
-        <label htmlFor="statusFilter" className="text-black">Filter by Status: &nbsp;</label>
+        <label htmlFor="statusFilter" className="text-black">
+          Filter by Status: &nbsp;
+        </label>
         <select
           id="statusFilter"
           className="text-fuchsia-500	"
@@ -97,6 +99,7 @@ const AdminDashboard = () => {
               <th>Tracking ID</th>
               <th>Date</th>
               <th>Category</th>
+              <th>Location</th>
               <th>Photo</th>
               <th>Complaint</th>
               <th>Status</th>
@@ -108,6 +111,15 @@ const AdminDashboard = () => {
                 <td>{complaint._id}</td>
                 <td>{complaint.date}</td>
                 <td>{complaint.category}</td>
+                <td>
+                  <div>
+                    {complaint.state}
+                    <br></br>
+                    {complaint.district}
+                    <br></br>
+                    {complaint.pincode}
+                  </div>
+                </td>
                 <td>
                   <img
                     src={`http://localhost:5000/${complaint.photo}`}

@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./ComplaintRegister.css";
 
 const ComplaintRegister = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const location = useLocation();
   const { phoneId } = location.state || ""; // Retrieve phoneId from state
   const date = new Date();
@@ -36,11 +36,7 @@ const ComplaintRegister = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "category" && value !== "Other") {
-      setFormData({ ...formData, [name]: value, othercategory: "" });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFileChange = (event) => {
@@ -58,7 +54,6 @@ const ComplaintRegister = () => {
       "pincode",
       "comment",
       "photo",
-      "video",
     ];
     const allFieldsFilled = requiredFields.every(
       (field) => formData[field] !== "" && formData[field] !== null
@@ -133,24 +128,29 @@ const ComplaintRegister = () => {
 
   const stateData = {
     "Tamil Nadu": {
-      districts: ["Chennai", "Coimbatore", "Madurai"],
-      pinCodes: ["600001", "641001", "625001"],
+      Chennai: ["600001", "600002", "600003", "600004"],
+      Coimbatore: ["631027", "641013", "641005", "641005"],
+      Madurai: ["625001", "625009", "625012", "625013"],
     },
     Karnataka: {
-      districts: ["Bangalore", "Mysore", "Hubli"],
-      pinCodes: ["560001", "570001", "580001"],
+      Bangalore: ["560001", "560002", "560003"],
+      Mysore: ["570001", "570002", "570003"],
+      Hubli: ["580001", "580002", "580003"],
     },
     Maharashtra: {
-      districts: ["Mumbai", "Pune", "Nagpur"],
-      pinCodes: ["400001", "411001", "440001"],
+      Mumbai: ["400001", "400002", "400003"],
+      Pune: ["411001", "411002", "411003"],
+      Nagpur: ["440001", "440002", "440003"],
     },
     "West Bengal": {
-      districts: ["Kolkata", "Darjeeling", "Howrah"],
-      pinCodes: ["700001", "734101", "711101"],
+      Kolkata: ["700001", "700002", "700003"],
+      Darjeeling: ["734101", "734102", "734103"],
+      Howrah: ["711101", "711102", "711103"],
     },
     "Uttar Pradesh": {
-      districts: ["Lucknow", "Kanpur", "Varanasi"],
-      pinCodes: ["226001", "208001", "221001"],
+      Lucknow: ["226001", "226002", "226003"],
+      Kanpur: ["208001", "208002", "208003"],
+      Varanasi: ["221001", "221002", "221003"],
     },
   };
 
@@ -160,6 +160,15 @@ const ComplaintRegister = () => {
       ...formData,
       state: selectedState,
       district: "",
+      pincode: "",
+    });
+  };
+
+  const handleDistrictChange = (event) => {
+    const selectedDistrict = event.target.value;
+    setFormData({
+      ...formData,
+      district: selectedDistrict,
       pincode: "",
     });
   };
@@ -236,7 +245,7 @@ const ComplaintRegister = () => {
                 ))}
               </select>
             </div>
-            <div className="form-row1 ">
+            <div className="form-row1">
               <label
                 htmlFor="district"
                 className="text-black rightspace font-bold"
@@ -248,15 +257,16 @@ const ComplaintRegister = () => {
                 name="district"
                 className="input-text"
                 value={formData.district}
-                onChange={handleChange}
+                onChange={handleDistrictChange}
                 required
               >
                 <option value="">---Select---</option>
-                {stateData[formData.state]?.districts.map((district) => (
-                  <option key={district} value={district}>
-                    {district}
-                  </option>
-                ))}
+                {formData.state &&
+                  Object.keys(stateData[formData.state]).map((district) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  ))}
               </select>
             </div>
             <div className="form-row1">
@@ -275,11 +285,15 @@ const ComplaintRegister = () => {
                 required
               >
                 <option value="">---Select---</option>
-                {stateData[formData.state]?.pinCodes.map((pincode) => (
-                  <option key={pincode} value={pincode}>
-                    {pincode}
-                  </option>
-                ))}
+                {formData.state &&
+                  formData.district &&
+                  stateData[formData.state][formData.district]?.map(
+                    (pincode) => (
+                      <option key={pincode} value={pincode}>
+                        {pincode}
+                      </option>
+                    )
+                  )}
               </select>
             </div>
             <div className="form-row1">
@@ -343,7 +357,7 @@ const ComplaintRegister = () => {
               <button
                 className="text-blue-800"
                 onClick={() =>
-                  Navigate("/dashboard", { state: { phoneId: phoneId } })
+                  navigate("/dashboard", { state: { phoneId: phoneId } })
                 }
               >
                 Return to dashboard

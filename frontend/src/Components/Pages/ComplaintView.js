@@ -1,4 +1,4 @@
-import axios from "axios"; // Import axios for HTTP requests
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import like_img from "./Assets/Icons/thumbs.jpg";
@@ -56,7 +56,6 @@ const ComplaintView = () => {
 
   useEffect(() => {
     fetchComplaints();
-    console.log("Complaint view phone Id", phoneId);
   }, [formData]);
 
   const handleStateChange = (e) => {

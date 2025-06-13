@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import trash from "./Assets/Icons/delete.jpg"; // Assuming this is the correct path to your trash image
 import "./TrackComplaint.css";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function Complaints() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function Complaints() {
     console.log(phoneId);
     if (phoneId) {
       axios
-        .get(`http://localhost:5000/api/complaints`)
+        .get(`${BASE_URL}/api/complaints`)
         .then((response) => {
           const filteredComplaints = response.data.filter(
             (complaint) => complaint.phoneId === phoneId
@@ -29,7 +30,7 @@ export default function Complaints() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/api/complaints/${id}`)
+      .delete(`${BASE_URL}/api/complaints/${id}`)
       .then((response) => {
         console.log("Complaint deleted:", response.data);
         setComplaints(complaints.filter((complaint) => complaint._id !== id));
@@ -62,7 +63,7 @@ export default function Complaints() {
                 <td>{complaint.category}</td>
                 <td>
                   <img
-                    src={`http://localhost:5000/${complaint.photo}`}
+                    src={`${BASE_URL}/${complaint.photo}`}
                     alt="complaint"
                     style={{ width: "5em", height: "5em" }}
                   />

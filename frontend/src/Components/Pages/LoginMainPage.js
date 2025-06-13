@@ -8,6 +8,7 @@ import Name from "./Assets/Icons/name.png";
 import Pass from "./Assets/Icons/pass.png";
 import Phone from "./Assets/Icons/phone.png";
 import "./LoginMainPage.css";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const LoginMainPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -30,7 +31,7 @@ const LoginMainPage = () => {
       const phone = document.getElementById("login-phone").value;
       const password = document.getElementById("login-password").value;
 
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post(`${BASE_URL}/api/login`, {
         phone,
         password,
       });
@@ -86,7 +87,7 @@ const LoginMainPage = () => {
 
       const hashedPassword = await bcrypt.hash(password, 8);
 
-      const response = await axios.post("http://localhost:5000/api/signup", {
+      const response = await axios.post(`${BASE_URL}/api/signup`, {
         firstName,
         lastName,
         email,

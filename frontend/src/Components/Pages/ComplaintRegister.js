@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./ComplaintRegister.css";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const ComplaintRegister = () => {
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ const ComplaintRegister = () => {
         console.log("Form Data to Send:", formDataToSend);
 
         await axios.post(
-          "http://localhost:5000/api/complaints",
+          `${BASE_URL}/api/complaints`,
           formDataToSend,
           {
             headers: {

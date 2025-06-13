@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import like_img from "./Assets/Icons/thumbs.jpg";
 import "./ComplaintView.css";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const ComplaintView = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +39,7 @@ const ComplaintView = () => {
 
   const fetchComplaints = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/complaints");
+      const response = await axios.get(`${BASE_URL}/api/complaints`);
       const fetchedComplaints = response.data;
 
       const filteredComplaints = fetchedComplaints.filter(
@@ -79,7 +80,7 @@ const ComplaintView = () => {
   const handleLike = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/complaints/${id}/likes`
+        `${BASE_URL}/api/complaints/${id}/likes`
       );
       const updatedLike = response.data.updatedLike;
       setComplaints((prevComplaints) =>
@@ -170,7 +171,7 @@ const ComplaintView = () => {
                   <h3 id="complaint-title">{complaint.category}</h3>
                   <div className="complaint-content">
                     <img
-                      src={`http://localhost:5000/${complaint.photo}`}
+                      src={`${BASE_URL}/${complaint.photo}`}
                       alt="Complaint"
                       className="complaint-image"
                     />

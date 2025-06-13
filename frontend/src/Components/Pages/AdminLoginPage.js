@@ -5,6 +5,7 @@ import EmailIcon from "./Assets/Icons/email.png";
 import PasswordIcon from "./Assets/Icons/pass.png";
 import PhoneIcon from "./Assets/Icons/phone.png";
 import BackgroundImage from "./Assets/Images/bgbgbg.png";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function LoginPage() {
       }
 
       const response = await axios.post(
-        "http://localhost:5000/api/admin/Adminlogin",
+        `${BASE_URL}/api/admin/Adminlogin`,
         {
           email,
           phone,

@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import FeedEmail from "./Assets/Icons/FeedEmail.png";
 import UserName from "./Assets/Icons/username.png";
 import "./FeedbackForm.css";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function FeedbackForm() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function FeedbackForm() {
     // console.log(formData);
     // Handle form submission logic here
     try {
-      await axios.post("http://localhost:5000/api/feedback", formData);
+      await axios.post(`${BASE_URL}/api/feedback`, formData);
       window.alert("Thanks for the feedback");
     } catch (error) {
       console.log("Could not register the feedback", error);

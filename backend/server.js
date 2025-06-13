@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+require('dotenv').config();
 
 const complaints = require("./routes/complaints");
 const signupRouter = require("./routes/Signup");
@@ -18,19 +19,13 @@ app.use("/uploads", express.static("uploads"));
 
 // MongoDB connection
 mongoose
-  .connect(
-    "mongodb+srv://Project:Test@cluster0.6c3p6lc.mongodb.net/ComplaintsDB?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => {
-    console.log("MongoDB connected");
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
   })
-  .catch((err) => {
-    console.error("MongoDB connection error:", err);
-  });
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error(err));
+
 
 app.get("/", (req, res) => {
   res.send("Hello, world!");
